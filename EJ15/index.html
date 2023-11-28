@@ -11,83 +11,83 @@
 
 <body>
 
-    <div id="calculadora">
-        <div id="pantalla"></div>
-        <div id="teclas">
-            <button>7</button><button>8</button><button>9</button><button class="operator">/</button>
-            <button>4</button><button>5</button><button>6</button><button class="operator">*</button>
-            <button>1</button><button>2</button><button>3</button><button class="operator">-</button>
-            <button class="double">0</button><button>.</button><button class="operator">+</button><button
-                class="clear double">C</button><button class="double eval operator">=</button>
+    <div id="calculator">
+        <div id="screen"></div>
+        <div id="keys">
+            <button class="numbers">7</button><button class="numbers">8</button class="numbers"><button class="numbers">9</button><button class="operator">/</button>
+            <button class="numbers">4</button><button class="numbers">5</button><button class="numbers">6</button><button class="operator">*</button>
+            <button class="numbers">1</button><button class="numbers">2</button><button class="numbers">3</button><button class="operator">-</button>
+            <button class="double">0</button><button>.</button><button class="operator">+</button><button class="lol"></button>
+            <button class="clear double">C</button><button class="double eval operator">=</button>
         </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
 
-            const pantalla = document.getElementById('pantalla');
-            const teclas = document.getElementById('teclas');
+            const screen = document.getElementById('screen');
+            const keys = document.getElementById('keys');
 
-            teclas.addEventListener('click', (event) => {
+            keys.addEventListener('click', (event) => {
 
                 if (event.target.tagName === 'BUTTON') {
 
-                    const textoTecla = event.target.textContent;
+                    const textKey = event.target.textContent;
 
-                    if (textoTecla === 'C') {
+                    if (textKey === 'C') {
 
-                        pantalla.textContent = '';
+                        screen.textContent = '';
 
-                    } else if (textoTecla === '=') {
+                    } else if (textKey === '=') {
 
                         try {
 
-                            pantalla.textContent = eval(pantalla.textContent);
+                            screen.textContent = eval(screen.textContent);
 
                         } catch (error) {
                             
-                            pantalla.textContent = 'ERROR';
+                            screen.textContent = 'ERROR';
                         }
 
                     } else {
 
-                        actualizarPantalla(textoTecla);
+                        updateScreen(textKey);
                     }
                 }
             });
 
             document.addEventListener('keydown', (event) => {
 
-                const teclaPresionada = event.key;
+                const keyPressed = event.key;
 
-                if (/[0-9+\-*/.=]/.test(teclaPresionada)) {
-
-                    event.preventDefault();
-                    actualizarPantalla(teclaPresionada);
-
-                } else if (teclaPresionada === 'c' || teclaPresionada === 'C') {
+                if (/[0-9+\-*/.=]/.test(keyPressed)) {
 
                     event.preventDefault();
-                    pantalla.textContent = '';
+                    updateScreen(keyPressed);
 
-                } else if (teclaPresionada === 'Enter') {
+                } else if (keyPressed === 'c' || keyPressed === 'C') {
+
+                    event.preventDefault();
+                    screen.textContent = '';
+
+                } else if (keyPressed === 'Enter') {
 
                     event.preventDefault();
 
                     try {
 
-                        pantalla.textContent = eval(pantalla.textContent);
+                        screen.textContent = eval(screen.textContent);
 
                     } catch (error) {
 
-                        pantalla.textContent = 'ERROR';
+                        screen.textContent = 'ERROR';
                     }
                 }
             });
 
-            function actualizarPantalla(valor) {
+            function updateScreen(value) {
                 
-                pantalla.textContent += valor;
+                screen.textContent += value;
             }
         });
     </script>
