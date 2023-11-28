@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/codigo.js"></script>
+</head>
+<body>
+    <p id="parrafo1">Párrafo</p>
+    <table id="table">
+        <tr>
+            <td><p class="pTabla">Marc</p></td>
+            <td><p class="pTabla">Juanka</p></td>
+        </tr>
+    </table>
+    <table id="table2">
+        <tr>
+        <td><p class="pTabla">Alejandro</p></td>
+        <td><p class="pTabla">Ainara</p></td>
+        </tr>
+    </table>
+
+    <script>
+        //Click parrafo
+        document.querySelectorAll('p').forEach(p => {
+        p.addEventListener('click', () => {
+            alert('Se presionó un párrafo del documento');
+            console.log("Click ");
+        });
+        });
+
+        //Click parrafo segunda tabla
+        document.querySelectorAll('#table2 .pTabla').forEach(p2 => {
+            p2.addEventListener('click', () => {
+            alert('Se presionó un párrafo contenido en la segunda tabla');
+        });
+        });
+    </script>
+
+</body>
+</html>

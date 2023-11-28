@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/codigo.js"></script>
+</head>
+
+<body>
+
+    <div id="calculadora">
+        <div id="pantalla"></div>
+        <div id="teclas">
+            <button>7</button><button>8</button><button>9</button><button class="operator">/</button>
+            <button>4</button><button>5</button><button>6</button><button class="operator">*</button>
+            <button>1</button><button>2</button><button>3</button><button class="operator">-</button>
+            <button class="double">0</button><button>.</button><button class="operator">+</button><button
+                class="clear double">C</button><button class="double eval operator">=</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const pantalla = document.getElementById('pantalla');
+            const teclas = document.getElementById('teclas');
+
+            teclas.addEventListener('click', (event) => {
+
+                if (event.target.tagName === 'BUTTON') {
+
+                    const textoTecla = event.target.textContent;
+
+                    if (textoTecla === 'C') {
+
+                        pantalla.textContent = '';
+
+                    } else if (textoTecla === '=') {
+
+                        try {
+
+                            pantalla.textContent = eval(pantalla.textContent);
+
+                        } catch (error) {
+                            
+                            pantalla.textContent = 'ERROR';
+                        }
+
+                    } else {
+
+                        actualizarPantalla(textoTecla);
+                    }
+                }
+            });
+
+            document.addEventListener('keydown', (event) => {
+
+                const teclaPresionada = event.key;
+
+                if (/[0-9+\-*/.=]/.test(teclaPresionada)) {
+
+                    event.preventDefault();
+                    actualizarPantalla(teclaPresionada);
+
+                } else if (teclaPresionada === 'c' || teclaPresionada === 'C') {
+
+                    event.preventDefault();
+                    pantalla.textContent = '';
+
+                } else if (teclaPresionada === 'Enter') {
+
+                    event.preventDefault();
+
+                    try {
+
+                        pantalla.textContent = eval(pantalla.textContent);
+
+                    } catch (error) {
+
+                        pantalla.textContent = 'ERROR';
+                    }
+                }
+            });
+
+            function actualizarPantalla(valor) {
+                
+                pantalla.textContent += valor;
+            }
+        });
+    </script>
+
+</body>
+
+</html>
