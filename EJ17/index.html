@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/codigo.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <h3>Reloj con Javascript</h3>
+    </header>
+    <div id="clock"></div>
+
+    <script>
+
+        function updateClock() {
+
+            var date = new Date();
+            var secs = date.getSeconds();
+            var mins = date.getMinutes();
+            var hours = date.getHours();
+
+            var actualTime = hours + ":" + mins + ":" + secs;
+
+            document.getElementById("clock").textContent = actualTime;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+
+</body>
+
+</html>

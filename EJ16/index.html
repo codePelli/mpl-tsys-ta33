@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/codigo.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+
+<body class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div id="pics" class="d-flex flex-wrap justify-content-between">
+                <img src="img/foto1.jpg" alt="India" onclick="showPic(this)" class="imgSmaill">
+                <img src="img/foto2.jpg" alt="Nose" onclick="showPic(this)" class="imgSmaill">
+                <img src="img/foto3.jpg" alt="Partenon, Athina, Hellas" onclick="showPic(this)" class="imgSmaill">
+                <img src="img/foto4.jpg" alt="Norge" onclick="showPic(this)" class="imgSmaill">
+                <img src="img/foto5.jpg" alt="Peru?" onclick="showPic(this)" class="imgSmaill">
+                <img src="img/foto6.jpg" alt="Egypt" onclick="showPic(this)" class="imgSmaill">
+                <img src="img/foto7.jpg" alt="Paris?" onclick="showPic(this)" class="imgSmaill">
+                <img src="img/foto8.jpg" alt="Tarragona o Segovia jsjs" onclick="showPic(this)" class="imgSmaill">
+            </div>
+        </div>
+        <div class="col-md-6" id="bigPicture">
+            <img id="bigPic" src="img/foto1.jpg" class="img-fluid">
+            <footer id="footer" class="mt-2"></footer>
+        </div>
+    </div>
+
+    <script>
+        function showPic(img) {
+            var bigPic = document.getElementById('bigPic');
+            var footer = document.getElementById('footer');
+
+            bigPic.src = img.src;
+            footer.textContent = img.alt;
+        }
+    </script>
+</body>
+
+</html>
